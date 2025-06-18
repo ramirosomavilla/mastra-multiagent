@@ -1,0 +1,39 @@
+{
+  "name": "mastra-multiagent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:mastra": "mastra dev --dir src/mastra",
+    "build:mastra": "mastra build --dir src/mastra",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^1.2.19",
+    "@mastra/core": "^0.10.6",
+    "@mastra/libsql": "^0.10.3",
+    "@mastra/loggers": "^0.10.2",
+    "@mastra/memory": "^0.10.3",
+    "next": "^15.3.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zod": "^3.25.63"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "mastra": "^0.10.6",
+    "typescript": "^5.8.3"
+  }
+}

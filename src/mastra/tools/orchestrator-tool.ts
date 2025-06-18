@@ -1,0 +1,59 @@
+import { createTool } from "@mastra/core/tools";
+import { z } from "zod";
+import { mastra } from "@/mastra";
+import { Agent } from "@mastra/core/agent";
+
+export const callWeatherAgent = createTool({
+  id: "call-weather-agent",
+  description: "Call the weather agent",
+  inputSchema: z.object({
+    city: z.string().describe('City name'),
+  }),
+  execute: async ({ context }) => {
+    const agent: Agent = mastra.getAgent('weatherAgent');
+    const result: any = await agent.generate([
+      {
+        role: 'user',
+        content: `What's the weather like in ${context.city}?`,
+      },
+    ]);
+    return { weather: result.text };
+  },
+});
+
+export const callInfoAgent = createTool({
+  id: "call-info-agent",
+  description: "Call the info agent",
+  inputSchema: z.object({
+    city: z.string().describe('City name'),
+  }),
+  execute: async ({ context }) => {
+    const agent: Agent = mastra.getAgent('infoAgent');
+    const result: any = await agent.generate([
+      {
+        role: 'user',
+        content: `What's the weather like in ${context.city}?`,
+      },
+    ]);
+    return { info: result.text };
+  },
+});
+
+export const callFileWriterAgent = createTool({
+  id: "call-file-writer-agent",
+  description: "Call the file writer agent to write a file to the project root",
+  inputSchema: z.object({
+    filename: z.string().describe('Filename'),
+    content: z.string().describe('Content'),
+  }),
+  execute: async ({ context }) => {
+    const agent: Agent = mastra.getAgent('fileWriterAgent');
+    const result: any = await agent.generate([
+      {
+        role: 'user',
+        content: `Write a file with the following content: ${context.content} and filename: ${context.filename}`,
+      },
+    ]);
+    return { success: true, filePath: result.text };
+  },
+});
