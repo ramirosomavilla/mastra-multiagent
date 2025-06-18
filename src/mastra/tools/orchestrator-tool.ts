@@ -1,7 +1,10 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
-import { mastra } from "@/mastra";
+
 import { Agent } from "@mastra/core/agent";
+import { weatherAgent } from "../agents/weather-agent";
+import { infoAgent } from "../agents/info-agent";
+import { fileWriterAgent } from "../agents/file-writer-agent";
 
 export const callWeatherAgent = createTool({
   id: "call-weather-agent",
@@ -10,7 +13,7 @@ export const callWeatherAgent = createTool({
     city: z.string().describe('City name'),
   }),
   execute: async ({ context }) => {
-    const agent: Agent = mastra.getAgent('weatherAgent');
+    const agent: Agent = weatherAgent;
     const result: any = await agent.generate([
       {
         role: 'user',
@@ -28,7 +31,7 @@ export const callInfoAgent = createTool({
     city: z.string().describe('City name'),
   }),
   execute: async ({ context }) => {
-    const agent: Agent = mastra.getAgent('infoAgent');
+    const agent: Agent = infoAgent;
     const result: any = await agent.generate([
       {
         role: 'user',
@@ -47,7 +50,7 @@ export const callFileWriterAgent = createTool({
     content: z.string().describe('Content'),
   }),
   execute: async ({ context }) => {
-    const agent: Agent = mastra.getAgent('fileWriterAgent');
+    const agent: Agent = fileWriterAgent;
     const result: any = await agent.generate([
       {
         role: 'user',

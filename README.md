@@ -1,4 +1,4 @@
-# Mastra Multiagent
+# Next Mastra Multiagent
 
 This repository demonstrates how to run Mastra within a Next.js project, enabling orchestration of multiple intelligent agents with tools and persistent memory in a modern web application environment.
 
