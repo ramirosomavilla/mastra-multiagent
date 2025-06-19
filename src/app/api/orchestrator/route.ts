@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { mastra } from "../../../mastra";
+import { orchestratorAgent } from "@/mastra/agents/orchestrator-agent";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const message = body.message;
-  const agent = mastra.getAgent('orchestratorAgent');
+  const agent = orchestratorAgent;
   const result = await agent.generate([
     {
       role: 'user',
