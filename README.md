@@ -61,7 +61,6 @@ This project is a template for creating and orchestrating multiple intelligent a
 
 4. **Register the agent in the orchestrator and index:**
 
-   - **In `src/mastra/index.ts`**: Import and add your agent to the `agents` object in the `Mastra` constructor.
    - **In `src/mastra/agents/orchestrator-agent.ts`**: Import your agent's tool(s) and add them to the `tools` property if you want the orchestrator to be able to call your agent.
    - **In `src/mastra/tools/orchestrator-tool.ts`**: Create a tool (using `createTool`) that wraps a call to your new agent, following the pattern of the existing tools.
 
