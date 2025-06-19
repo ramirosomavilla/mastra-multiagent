@@ -8,7 +8,7 @@ import { fileWriterAgent } from "../agents/file-writer-agent";
 
 export const callWeatherAgent = createTool({
   id: "call-weather-agent",
-  description: "Call the weather agent",
+  description: weatherAgent.getDescription(),
   inputSchema: z.object({
     city: z.string().describe('City name'),
   }),
@@ -26,7 +26,7 @@ export const callWeatherAgent = createTool({
 
 export const callInfoAgent = createTool({
   id: "call-info-agent",
-  description: "Call the info agent",
+  description: infoAgent.getDescription(),
   inputSchema: z.object({
     city: z.string().describe('City name'),
   }),
@@ -44,7 +44,7 @@ export const callInfoAgent = createTool({
 
 export const callFileWriterAgent = createTool({
   id: "call-file-writer-agent",
-  description: "Call the file writer agent to write a file to the project root",
+  description: fileWriterAgent.getDescription(),
   inputSchema: z.object({
     filename: z.string().describe('Filename'),
     content: z.string().describe('Content'),

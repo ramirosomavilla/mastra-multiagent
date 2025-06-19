@@ -19,7 +19,7 @@ export default function OrchestratorChat() {
       const data = await res.json();
       setResponse(data);
     } catch (err) {
-      setResponse("Error al comunicarse con el orchestrator.");
+      setResponse("Error communicating with the orchestrator.");
     }
     setLoading(false);
   };
@@ -33,11 +33,11 @@ export default function OrchestratorChat() {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Escribe tu mensaje..."
+        placeholder="Write your message..."
         style={{ width: "100%", padding: 8, marginBottom: 8 }}
       />
       <button type="submit" disabled={loading || !input}>
-        {loading ? "Enviando..." : "Enviar"}
+        {loading ? "Sending..." : "Send"}
       </button>
       {response && (
         <div style={{ marginTop: 16, background: "#f5f5f5", padding: 12 }}>
